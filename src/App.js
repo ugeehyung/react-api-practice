@@ -5,18 +5,25 @@ class App extends React.Component {
 
   state = {
     isLoading: true,
-    music: []
+    music: [],
   };
   
+  getMusic = async () => {
+    const {
+      data : {
+        data : { music },
+      },
+    } = await axios.get("https://ws.audioscrobbler.com/2.0/?method=track.search&track=&api_key=cc0c40005535fde9039f0a38b2631bf0&format=json");
+    this.setState({ music });
+  }
+
   componentDidMount() {
-    
-    //음악 데이터 로딩
-    axios.get('https://ws.audioscrobbler.com/2.0/?method=track.search&track=BTS&api_key=cc0c40005535fde9039f0a38b2631bf0&format=json');
+    this.getMusic();
   }
 
   render() {  
     const { isLoading } = this.state;
-    return <div>{isLoading ? 'Loading...' : 'We are ready'}</div>
+    return <div>{ isLoading ? 'Loading...' : 'Start...' }</div>;
   }
 }
 
