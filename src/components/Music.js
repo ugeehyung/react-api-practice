@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './App.css';
+import './Music.css'; 
+// ./ : 현재 파일
 
-function Music( { photo, title, artist }) {
+function Music({ poster, title, artist }) {
     return (
         <div className="music"> 
-                <img src={photo} alt={title} title={title}/>        
+                <img src={poster} alt={title} title={title}/>        
             <div className = "music__data">
                 <h3 className="music__title">{title}</h3>
                 <h5 className="music__artist">{artist}</h5>
@@ -15,7 +16,7 @@ function Music( { photo, title, artist }) {
 }
 
 Music.propTypes = {
-    photo : PropTypes.string.isRequired,
+    poster : PropTypes.string.isRequired,
     album : PropTypes.string.isRequired,
     artist: PropTypes.string.isRequired,
 };
